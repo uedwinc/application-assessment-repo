@@ -9,5 +9,8 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 
 COPY --from=BUILD_IMAGE application-assessment-repo/target/spring-petclinic-2.4.2.war /usr/local/tomcat/webapps/ROOT.war
 
+# Add command to copy artifact to /mnt directory
+RUN cp /usr/local/tomcat/webapps/ROOT.war /mnt/spring-petclinic-2.4.2.war
+
 EXPOSE 8080
 CMD ["catalina.sh", "run"]

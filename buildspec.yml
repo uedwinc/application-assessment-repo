@@ -17,9 +17,7 @@ phases:
       - docker push $IMAGE_URL/$REPO_NAME
       - cd $CODEBUILD_SRC_DIR
       - echo Creating artifact..
-      - CONTAINER_ID=$(docker create java-repo)  # Create a container but don't start it
-      - docker cp $CONTAINER_ID:/application-assessment-repo/target/spring-petclinic-2.4.2.war ./spring-petclinic-2.4.2.war
-      - docker rm $CONTAINER_ID  # Clean up the container
+      - docker run --rm -v $PWD:/mnt $IMAGE_URL/$REPO_NAME cp /mnt/spring-petclinic-2.4.2.war /mnt/spring-petclinic-2.4.2.war
 env:
   variables:
     AWS_ACCOUNT_ID: 052101902987

@@ -18,7 +18,7 @@ phases:
       - cd $CODEBUILD_SRC_DIR
       - echo Creating artifact..
       - CONTAINER_ID=$(docker create java-repo)  # Create a container but don't start it
-      - docker cp $CONTAINER_ID:/application-assessment-repo/target/spring-petclinic-2.4.2.war spring-petclinic-2.4.2.war
+      - docker cp $CONTAINER_ID:/application-assessment-repo/target/spring-petclinic-2.4.2.war ./spring-petclinic-2.4.2.war
       - docker rm $CONTAINER_ID  # Clean up the container
 env:
   variables:

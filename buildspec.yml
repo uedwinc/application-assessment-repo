@@ -16,8 +16,8 @@ phases:
       - echo Pushing the Docker image..
       - docker push $IMAGE_URL/$REPO_NAME
       - cd $CODEBUILD_SRC_DIR
-      - echo "imagedefinitions.json > [{\"name\":\"$CONTAINER_NAME\",\"imageUri\":\"$IMAGE_URL/$REPO_NAME\"}]" > imagedefinitions.json
-      - printf "[{\"name\":\"$CONTAINER_NAME\",\"imageUri\":\"$IMAGE_URL/$REPO_NAME\"}]" > imagedefinitions.json
+      - echo Creating artifact..
+      - docker run --rm -v $PWD:/mnt java-repo cp /application-assessment-repo/target/spring-petclinic-2.4.2.war /mnt/spring-petclinic-2.4.2.war
 env:
   variables:
     AWS_ACCOUNT_ID: 052101902987
@@ -27,4 +27,4 @@ env:
     REPO_NAME: java-repo:latest
 artifacts:
   files:
-    - imagedefinitions.json
+    - spring-petclinic-2.4.2.war

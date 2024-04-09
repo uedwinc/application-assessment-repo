@@ -15,9 +15,6 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image..
       - docker push $IMAGE_URL/$REPO_NAME
-      - cd $CODEBUILD_SRC_DIR
-      - echo Creating artifact..
-      - docker run --rm -v $PWD:/mnt $IMAGE_URL/$REPO_NAME cp /mnt/spring-petclinic-2.4.2.war /mnt/spring-petclinic-2.4.2.war
 env:
   variables:
     AWS_ACCOUNT_ID: 052101902987
@@ -25,6 +22,3 @@ env:
     CONTAINER_NAME: java
     IMAGE_URL: 052101902987.dkr.ecr.us-east-2.amazonaws.com
     REPO_NAME: java-repo:latest
-artifacts:
-  files:
-    - spring-petclinic-2.4.2.war

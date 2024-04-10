@@ -22,3 +22,9 @@ env:
     CONTAINER_NAME: java
     IMAGE_URL: 052101902987.dkr.ecr.us-east-2.amazonaws.com
     REPO_NAME: java-repo:latest
+artifacts:
+  files:
+    - '**/*'
+  base-directory: base_dir
+  name: BuildArtifact
+  discard-paths: no

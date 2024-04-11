@@ -11,6 +11,13 @@ resource "aws_security_group" "alb-security-group" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  // Allow traffic on port 8080 for Tomcat
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   egress {
     from_port   = 0
